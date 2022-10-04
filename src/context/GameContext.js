@@ -1,3 +1,4 @@
+import { check } from 'prettier';
 import { createContext, useContext, useState } from 'react';
 
 const GameContext = createContext();
@@ -17,6 +18,33 @@ const GameProvider = ({ children }) => {
     setCurrentPlayer('X');
   };
 
+  const updateSpace = (num) => {
+    if (!active) return;
+    if (board[num].content !== '') return;
+
+    setBoard((prev) =>
+      prev.map((box) => (box.space === num ? { space: num, content: currentPlayer } : box))
+    );
+    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+  };
+
+  const isCatsGame = () => {
+    return board.filter((space) => space.content === '').length === 0;
+  };
+
+  const checkGameStatus = () => {
+    if (!active) return;
+    const winner = checkWinner();
+    if (winner) {
+      setMessage(`${winner} is the WINNER!`);
+      setActive(false);
+    } else if (isCatsGame()) {
+      setMessage('Meow, Cats Game!');
+      setActive(false);
+    }
+  };
+
+  checkGameStatus();
 
   return (
     <GameContext.Provider value={{ currentPlayer, setCurrentPlayer }}>
