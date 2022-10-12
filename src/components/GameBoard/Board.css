@@ -6,6 +6,7 @@ display: grid;
 border: 5px solid #e8cdb2;
 border-radius: 10px;
 grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+margin: auto;
 }
 
 .box {

@@ -21,10 +21,13 @@ const GameProvider = ({ children }) => {
   const updateSpace = (num) => {
     if (!active) return;
     if (board[num].content !== '') return;
+
     setBoard((prev) =>
       prev.map((box) => (box.space === num ? { space: num, content: currentPlayer } : box))
     );
-    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+    const nextPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    setCurrentPlayer(nextPlayer);
+    setMessage(`Your Turn ${nextPlayer}`);
   };
 
   const checkWinner = () => {

@@ -3,6 +3,7 @@ import { GameContext } from '../../context/GameContext';
 
 export default function GameHeader() {
   const { message, active, resetGame } = useContext(GameContext);
+
   return (
     <div>
       <h3>{message}</h3>
