@@ -1,0 +1,22 @@
+.board {
+width: 600px;
+height: 600px;
+color: #e8cdb2;
+display: grid;
+border: 5px solid #e8cdb2;
+border-radius: 10px;
+grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+margin: auto;
+}
+
+.box {
+background-color: #e8b2b2;
+border: 5px solid #e8cdb2;
+border-radius: 10px;
+color: #e8cdb2;
+font-size: 4rem;
+font-weight: bold;
+display: flex;
+justify-content: center;
+align-items: center;
+}
